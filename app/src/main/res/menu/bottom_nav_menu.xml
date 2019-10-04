@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bible"
+        android:icon="@drawable/holy_bible"
+        android:title="@string/bible" />
+
+    <item
+        android:id="@+id/tafseer"
+        android:icon="@drawable/church"
+        android:title="@string/tafseer" />
+
+    <item
+        android:id="@+id/radio"
+        android:icon="@drawable/ic_radio"
+        android:title="@string/radio" />
+
+</menu>
