@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 
 import com.example.mybible.NewBibleActivity;
 import com.example.mybible.OldBibleActivity;
@@ -25,6 +27,7 @@ public class SelectFragment extends Fragment {
     }
 
     Button newBible,oldBible;
+    Fragment fragment = null;
    View view;
     @Nullable
     @Override
@@ -34,6 +37,34 @@ public class SelectFragment extends Fragment {
         view = inflater.inflate(R.layout.activity_select,container,false);
         newBible=view.findViewById(R.id.new_bible);
         oldBible=view.findViewById(R.id.oldbible);
+
+        newBible.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                fragment=new NewBibleFragment();
+
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container,fragment)
+                        .commit();
+            }
+        });
+        oldBible.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment=new OldBibleFragment();
+
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container,fragment)
+                        .commit();
+            }
+            
+        });
         return view;
     }
 
