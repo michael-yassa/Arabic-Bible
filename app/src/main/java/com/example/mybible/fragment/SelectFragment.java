@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 
+import com.example.mybible.Contents;
 import com.example.mybible.NewBibleActivity;
 import com.example.mybible.OldBibleActivity;
 import com.example.mybible.R;
@@ -42,7 +43,7 @@ public class SelectFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-
+                Contents.statment = "new_statment";
                 fragment=new NewBibleFragment();
 
 
@@ -55,6 +56,7 @@ public class SelectFragment extends Fragment {
         oldBible.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Contents.statment = "old_statment";
                 fragment=new OldBibleFragment();
 
 
@@ -62,8 +64,9 @@ public class SelectFragment extends Fragment {
                         .beginTransaction()
                         .replace(R.id.fragment_container,fragment)
                         .commit();
+
             }
-            
+
         });
         return view;
     }

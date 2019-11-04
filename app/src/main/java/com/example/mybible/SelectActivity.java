@@ -33,6 +33,7 @@ public class SelectActivity extends AppCompatActivity {
         newBible.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent=new Intent(SelectActivity.this, NewBibleActivity.class);
                 startActivity(intent);
             }

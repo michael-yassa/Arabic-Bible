@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mybible.Contents;
 import com.example.mybible.EshahActivity;
 import com.example.mybible.R;
+import com.example.mybible.VersesShowActivity;
 import com.example.mybible.adapters.BibleAdapter;
 
 import static com.example.mybible.Contents.EshahIndex;
@@ -51,6 +52,7 @@ public class NewBibleFragment extends Fragment {
             @Override
             public void onItemClick(int pos, String name) {
 
+
                 int indx=EshahIndex[pos];
               //  Toast.makeText(NewBibleFragment.this, indx+"", Toast.LENGTH_SHORT).show();
 
@@ -58,8 +60,11 @@ public class NewBibleFragment extends Fragment {
                 for(int i=1;i<=indx;i++){
                     EshahName.add( "اصحاح"+"   "+i);
                 }
-                Toast.makeText(getContext(), pos+  name+"", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getContext(), pos+  name+"", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(getContext(),EshahActivity.class);
+                intent.putExtra("pos",pos);
+                Toast.makeText(getContext(), pos+"", Toast.LENGTH_SHORT).show();
+              //  intent.putExtra("indx",indx);
                 startActivity(intent);
 
 
@@ -74,7 +79,8 @@ public class NewBibleFragment extends Fragment {
 
     }
 
-   // @Override
+
+    // @Override
   /**  protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_bible);
@@ -104,3 +110,4 @@ public class NewBibleFragment extends Fragment {
         recyclerView.setAdapter(adapter);
     }  **/
 }
+

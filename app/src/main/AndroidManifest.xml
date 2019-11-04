@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".VersesShowActivity"></activity>
         <activity
             android:name=".navigationDrawer.MenuActivity"
-            android:label="@string/title_activity_menu"></activity>
+            android:label="@string/title_activity_menu" />
         <activity android:name=".EshahActivity" />
         <activity android:name=".NewBibleActivity" />
         <activity android:name=".SelectActivity" />

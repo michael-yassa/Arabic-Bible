@@ -61,6 +61,7 @@ public class OldBibleFragment extends Fragment {
                     }}
                 Toast.makeText(getContext(), pos+  name+"", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(getContext(),EshahActivity.class);
+                intent.putExtra("pos",pos);
                 startActivity(intent);
 
 

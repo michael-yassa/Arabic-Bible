@@ -10,17 +10,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class EshahAdapter extends RecyclerView.Adapter<EshahAdapter.ViewHolder> {
 
 
-     ArrayList<String> EshahName;
-   // String[]eshhhh;
+     List<String> EshahName;
 
 
-    public EshahAdapter(ArrayList<String> eshahName) {
+
+    public EshahAdapter(List<String> eshahName) {
         EshahName = eshahName;
     }
+
+    public void updateData(){
+        EshahName.clear();
+        notifyDataSetChanged();
+    }
+
 
     @NonNull
     @Override
@@ -31,9 +38,17 @@ public class EshahAdapter extends RecyclerView.Adapter<EshahAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
      final  String name=EshahName.get(position);
         holder.eshahItem.setText(name);
+        if(onclickLisetner !=null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onclickLisetner.onItemClick(position,name);
+                }
+            });
+        }
 
     }
 
@@ -43,6 +58,16 @@ public class EshahAdapter extends RecyclerView.Adapter<EshahAdapter.ViewHolder> 
         return EshahName.size();
     }
 
+           OnclickLisetner onclickLisetner;
+
+    public void setOnclickLisetner(OnclickLisetner onclickLisetner) {
+        this.onclickLisetner = onclickLisetner;
+    }
+
+    public interface OnclickLisetner{
+             void onItemClick(int pos,String name);
+
+           }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
      TextView eshahItem;
