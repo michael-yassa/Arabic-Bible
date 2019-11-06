@@ -63,6 +63,7 @@ public class NewBibleFragment extends Fragment {
               //  Toast.makeText(getContext(), pos+  name+"", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(getContext(),EshahActivity.class);
                 intent.putExtra("pos",pos);
+                intent.putExtra("name",name);
                 Toast.makeText(getContext(), pos+"", Toast.LENGTH_SHORT).show();
               //  intent.putExtra("indx",indx);
                 startActivity(intent);

@@ -48,7 +48,7 @@ public class OldBibleFragment extends Fragment {
                 int indx=OldEshahIndex[pos];
                 Toast.makeText(getActivity(), indx+"", Toast.LENGTH_SHORT).show();
 
-                if(pos==18){
+                if(pos==21){
                     for(int i=1;i<=indx;i++){
 
                         EshahName.add( "مزمور"+"   "+i);
@@ -59,9 +59,10 @@ public class OldBibleFragment extends Fragment {
 
                         EshahName.add( "اصحاح"+"   "+i);
                     }}
-                Toast.makeText(getContext(), pos+  name+"", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getContext(), pos+  name+"", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(getContext(),EshahActivity.class);
                 intent.putExtra("pos",pos);
+                intent.putExtra("name",name);
                 startActivity(intent);
 
 

@@ -15,17 +15,21 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.mybible.Contents.statment;
+
 public class EshahActivity extends AppCompatActivity {
    EshahAdapter adapter;
    RecyclerView recyclerView;
    RecyclerView.LayoutManager layoutManager;
    TextView titel;
     int biblePosition;
+    String bibleName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eshah);
         recyclerView=findViewById(R.id.eshah_recycler_view);
+        titel=findViewById(R.id.title);
 
         adapter= new EshahAdapter(Contents.EshahName);
         layoutManager=new GridLayoutManager(this,1);
@@ -33,6 +37,14 @@ public class EshahActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         biblePosition = getIntent()
                 .getIntExtra("pos", -1);
+        bibleName = getIntent().getStringExtra("name");
+        if (statment == "old_statment" ) {
+            Toast.makeText(this, "inner if", Toast.LENGTH_SHORT).show();
+
+            titel.setText("ســـفـر"+bibleName);
+        }
+       else{ titel.setText(bibleName);}
+
 
         adapter.setOnclickLisetner(new EshahAdapter.OnclickLisetner() {
 
