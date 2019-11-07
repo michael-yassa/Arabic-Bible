@@ -43,6 +43,15 @@ public class EshahActivity extends AppCompatActivity {
 
             titel.setText("ســـفـر"+bibleName);
         }
+        else if(statment == "new_statment" && biblePosition<=3){
+            titel.setText("انجـيـل"+"  "+bibleName);
+        }
+        else if(statment == "new_statment" && biblePosition==4){
+            titel.setText("سفر"+"  "+bibleName);
+        }
+        else if(statment == "new_statment" && biblePosition>4 &&biblePosition<=25){
+            titel.setText("رســـالة"+" "+bibleName);
+        }
        else{ titel.setText(bibleName);}
 
 
