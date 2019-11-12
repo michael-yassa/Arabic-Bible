@@ -34,7 +34,7 @@ public class MenuActivity extends AppCompatActivity {
 
             }
             else if(id==R.id.tafseer){
-
+                fragment =new SelectFragment();
             }
             else if(id==R.id.radio){
 

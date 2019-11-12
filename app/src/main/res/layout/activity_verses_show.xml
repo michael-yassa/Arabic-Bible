@@ -16,31 +16,60 @@
         android:layout_marginTop="10dp"
         android:textColor="#fff"
         android:textSize="55sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="ghdkfsdjhf;l"
-        />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/verses_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintHeight_percent=".6"
-            app:layout_constraintTop_toBottomOf="@id/eshah_name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+        tools:text="ghdkfsdjhf;l" />
 
-            ></androidx.recyclerview.widget.RecyclerView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/verses_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/eshah_name"
+
+        ></androidx.recyclerview.widget.RecyclerView>
+
     <Button
         android:id="@+id/back"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:textSize="32sp"
-        android:text="رجـــــوع"
+        android:text="الســـابق"
 
-        />
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tafseer"
+
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/tafseer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:background="@color/color_white"
+
+        android:text="التفسير"
+        android:textSize="32sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/next"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/back" />
+
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="التـــالى"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/tafseer" />
 </androidx.constraintlayout.widget.ConstraintLayout>

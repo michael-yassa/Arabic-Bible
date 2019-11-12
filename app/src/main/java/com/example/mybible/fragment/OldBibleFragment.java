@@ -63,6 +63,7 @@ public class OldBibleFragment extends Fragment {
                 Intent intent=new Intent(getContext(),EshahActivity.class);
                 intent.putExtra("pos",pos);
                 intent.putExtra("name",name);
+                intent.putExtra("indx",indx);
                 startActivity(intent);
 
 

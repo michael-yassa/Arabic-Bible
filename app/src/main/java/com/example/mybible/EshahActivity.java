@@ -24,6 +24,7 @@ public class EshahActivity extends AppCompatActivity {
    TextView titel;
     int biblePosition;
     String bibleName;
+    int bibleIndx;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,8 @@ public class EshahActivity extends AppCompatActivity {
         biblePosition = getIntent()
                 .getIntExtra("pos", -1);
         bibleName = getIntent().getStringExtra("name");
+        bibleIndx =getIntent().getIntExtra("indx",-5);
+
         if (statment == "old_statment" ) {
             Toast.makeText(this, "inner if", Toast.LENGTH_SHORT).show();
 
@@ -68,6 +71,7 @@ public class EshahActivity extends AppCompatActivity {
 
                i.putExtra("Eshahpos",Epos);
                i.putExtra("biblePostion",biblePosition);
+               i.putExtra("indx",bibleIndx);
 
               // i.putExtra("name",-3);
                startActivity(i);

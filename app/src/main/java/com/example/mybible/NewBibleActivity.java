@@ -39,6 +39,7 @@ public class NewBibleActivity extends AppCompatActivity {
                }
                Toast.makeText(NewBibleActivity.this, pos+  name+"", Toast.LENGTH_SHORT).show();
                Intent intent=new Intent(NewBibleActivity.this,EshahActivity.class);
+
                startActivity(intent);
 
 

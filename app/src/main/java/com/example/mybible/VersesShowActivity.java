@@ -35,25 +35,23 @@ VersesAdapter adapter;
   RecyclerView recyclerView;
   RecyclerView.LayoutManager layoutManager;
    View view;
-
+    int bibleIndx;
    int BiBlePosition;
    int EshahPostion;
+   int cases;
     ArrayList<String> verses;
-    ArrayList<String> vs;
+  //  ArrayList<String> vrr;
      TextView title;
-     Button back;
-
-
-
-
-
+     Button previouse ,next,tafseer;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verses_show);
         recyclerView=findViewById(R.id.verses_recycler_view);
         title =findViewById(R.id.eshah_name);
-         back= findViewById(R.id.back);
+         previouse=findViewById(R.id.back);
+         next = findViewById(R.id.next);
+         tafseer=findViewById(R.id.tafseer);
       //  adapter=new VersesAdapter(null);
 
 
@@ -61,33 +59,18 @@ VersesAdapter adapter;
                 .getIntExtra("biblePostion", -7);
         EshahPostion = getIntent()
                 .getIntExtra("Eshahpos", -2);
+        bibleIndx=getIntent().getIntExtra("indx",-4);
         EshahPostion =  EshahPostion + 1 ;
-        verses= readEshahFromFile(Contents.statment+"/"+BiBlePosition+"/"+EshahPostion+".txt");
-      // Toast.makeText(this, Contents.statment +BiBlePosition+"" , Toast.LENGTH_SHORT).show();
-       // Toast.makeText(this, Contents.statment+BiBlePosition+EshahPostion+"", Toast.LENGTH_SHORT).show();
-      //  vs= readEshahFromFile("new_statment"+"/"+0+"/"+10+".txt");
 
-      title.setText("اصحاح"+EshahPostion);
+        reading();
 
 
-        layoutManager = new LinearLayoutManager(VersesShowActivity.this);
-        adapter = new VersesAdapter(verses);
 
-        recyclerView.setLayoutManager(layoutManager);
 
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+
       //  SnapHelper helper=new PagerSnapHelper();
         //helper.attachToRecyclerView(recyclerView);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                Intent intent = new Intent(VersesShowActivity.this,SelectActivity.class);
-                startActivity(intent);
-
-            }
-        });
     }
 
 
@@ -119,6 +102,110 @@ VersesAdapter adapter;
 
         return allVerses;
     }
+    public ArrayList<String> readtafseerFromFile(String fileName) {
+        ArrayList<String> tafseer = new ArrayList<>();
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(
+                    new InputStreamReader(getAssets().open("filename.txt")));
+        }
+        catch (IOException e) {}
+
+        return tafseer;
+    }
+        public void previuos(){
+            if(EshahPostion == 1)return;
+        EshahPostion =EshahPostion -1;
+        if(cases == 1){
+            reading();
+        }
+        else{
+            readingTafseer();
+        }
+
+
+        }
+    public void nextOne(){
+        if( EshahPostion== bibleIndx)return;
+        EshahPostion =EshahPostion +1;
+        if(cases == 1){
+            reading();
+        }
+        else{
+            readingTafseer();
+        }
+
+
+    }
+
+        public void reading(){
+        cases =1;
+        verses= readEshahFromFile(Contents.statment+"/"+BiBlePosition+"/"+EshahPostion+".txt");
+            title.setText("اصحاح"+EshahPostion);
+            tafseer.setText("التفسير");
+            tafseer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    readingTafseer();
+                }
+            });
+
+               previouse.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    previuos();
+                }
+            });
+               next.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    nextOne();
+                }
+
+            });
+            layoutManager = new LinearLayoutManager(VersesShowActivity.this);
+            adapter = new VersesAdapter(verses);
+
+            recyclerView.setLayoutManager(layoutManager);
+
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapter);
+        }
+      public void readingTafseer(){
+              cases =2;
+          verses= readEshahFromFile("tafseer"+"/"+"f_antonyous"+"/"+Contents.statment+"/"+BiBlePosition+"/"+EshahPostion+".txt");
+            tafseer.setText("قراءة الاصحاح");
+            title.setText(  "تفسير أصحاح رقم" +" "+ EshahPostion);
+          tafseer.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                  reading();
+              }
+          });
+          previouse.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                  previuos();
+              }
+          });
+          next.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                  nextOne();
+              }
+
+          });
+
+
+
+          layoutManager = new LinearLayoutManager(VersesShowActivity.this);
+          adapter = new VersesAdapter(verses);
+
+          recyclerView.setLayoutManager(layoutManager);
+
+          recyclerView.setLayoutManager(layoutManager);
+          recyclerView.setAdapter(adapter);
+      }
 
 
 }
