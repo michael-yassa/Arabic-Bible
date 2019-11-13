@@ -3,10 +3,12 @@ package com.example.mybible.navigationDrawer;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.mybible.Contents;
 import com.example.mybible.R;
 import com.example.mybible.SelectActivity;
 import com.example.mybible.fragment.OldBibleFragment;
 import com.example.mybible.fragment.SelectFragment;
+import com.example.mybible.fragment.SelectMofaserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,11 +32,15 @@ public class MenuActivity extends AppCompatActivity {
                 //Intent intent=new Intent(MenuActivity.this, SelectActivity.class);
                 //startActivity(intent);
                 //finish();
+                Contents.state = 1;
                 fragment =new SelectFragment();
 
             }
             else if(id==R.id.tafseer){
-                fragment =new SelectFragment();
+                // 2 mean tafseer
+                //1 mean reading
+                Contents.state = 2;
+                fragment =new SelectMofaserFragment();
             }
             else if(id==R.id.radio){
 

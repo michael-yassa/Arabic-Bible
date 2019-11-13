@@ -38,7 +38,7 @@ VersesAdapter adapter;
     int bibleIndx;
    int BiBlePosition;
    int EshahPostion;
-   int cases;
+
     ArrayList<String> verses;
   //  ArrayList<String> vrr;
      TextView title;
@@ -62,7 +62,11 @@ VersesAdapter adapter;
         bibleIndx=getIntent().getIntExtra("indx",-4);
         EshahPostion =  EshahPostion + 1 ;
 
-        reading();
+          if(Contents.state == 2){
+              readingTafseer();
+          }
+
+       else{ reading();}
 
 
 
@@ -116,7 +120,7 @@ VersesAdapter adapter;
         public void previuos(){
             if(EshahPostion == 1)return;
         EshahPostion =EshahPostion -1;
-        if(cases == 1){
+        if(Contents.cases == 1){
             reading();
         }
         else{
@@ -128,7 +132,7 @@ VersesAdapter adapter;
     public void nextOne(){
         if( EshahPostion== bibleIndx)return;
         EshahPostion =EshahPostion +1;
-        if(cases == 1){
+        if(Contents.cases == 1){
             reading();
         }
         else{
@@ -139,7 +143,7 @@ VersesAdapter adapter;
     }
 
         public void reading(){
-        cases =1;
+        Contents.cases =1;
         verses= readEshahFromFile(Contents.statment+"/"+BiBlePosition+"/"+EshahPostion+".txt");
             title.setText("اصحاح"+EshahPostion);
             tafseer.setText("التفسير");
@@ -172,8 +176,10 @@ VersesAdapter adapter;
             recyclerView.setAdapter(adapter);
         }
       public void readingTafseer(){
-              cases =2;
-          verses= readEshahFromFile("tafseer"+"/"+"f_antonyous"+"/"+Contents.statment+"/"+BiBlePosition+"/"+EshahPostion+".txt");
+              Contents.cases =2;
+              String mofaser = Contents.mofaserName;
+        //  Toast.makeText(this, ""+Contents.statment, Toast.LENGTH_SHORT).show();
+          verses= readEshahFromFile("tafseer"+"/"+mofaser+"/"+Contents.statment+"/"+BiBlePosition+"/"+EshahPostion+".txt");
             tafseer.setText("قراءة الاصحاح");
             title.setText(  "تفسير أصحاح رقم" +" "+ EshahPostion);
           tafseer.setOnClickListener(new View.OnClickListener() {

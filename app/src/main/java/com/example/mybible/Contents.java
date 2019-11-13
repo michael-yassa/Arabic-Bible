@@ -32,6 +32,9 @@ public class Contents {
    public static String[]Mn={
           };
     public static String statment ;
+    public static String mofaserName = "f_antonyous";
+    public static int cases;
+    public static int state;
 
 
 }

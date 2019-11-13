@@ -21,7 +21,7 @@ public class EshahActivity extends AppCompatActivity {
    EshahAdapter adapter;
    RecyclerView recyclerView;
    RecyclerView.LayoutManager layoutManager;
-   TextView titel;
+   TextView titel,kind;
     int biblePosition;
     String bibleName;
     int bibleIndx;
@@ -31,7 +31,7 @@ public class EshahActivity extends AppCompatActivity {
         setContentView(R.layout.activity_eshah);
         recyclerView=findViewById(R.id.eshah_recycler_view);
         titel=findViewById(R.id.title);
-
+        kind= findViewById(R.id.kind);
         adapter= new EshahAdapter(Contents.EshahName);
         layoutManager=new GridLayoutManager(this,1);
         recyclerView.setLayoutManager(layoutManager);
@@ -40,23 +40,7 @@ public class EshahActivity extends AppCompatActivity {
                 .getIntExtra("pos", -1);
         bibleName = getIntent().getStringExtra("name");
         bibleIndx =getIntent().getIntExtra("indx",-5);
-
-        if (statment == "old_statment" ) {
-            Toast.makeText(this, "inner if", Toast.LENGTH_SHORT).show();
-
-            titel.setText("ســـفـر"+bibleName);
-        }
-        else if(statment == "new_statment" && biblePosition<=3){
-            titel.setText("انجـيـل"+"  "+bibleName);
-        }
-        else if(statment == "new_statment" && biblePosition==4){
-            titel.setText("سفر"+"  "+bibleName);
-        }
-        else if(statment == "new_statment" && biblePosition>4 &&biblePosition<=25){
-            titel.setText("رســـالة"+" "+bibleName);
-        }
-       else{ titel.setText(bibleName);}
-
+         cases();
 
         adapter.setOnclickLisetner(new EshahAdapter.OnclickLisetner() {
 
@@ -88,9 +72,27 @@ public class EshahActivity extends AppCompatActivity {
     }
 
 
-    /** @Override
-    protected void onStart() {
-        super.onStart();
-        adapter.updateData();
-    }  */
+    public void cases(){
+        if(Contents.state==2){kind.setText("تفســـير");}
+        else{
+            kind.setText("قراءة") ;
+        }
+        if (statment == "old_statment" ) {
+            //Toast.makeText(this, "inner if", Toast.LENGTH_SHORT).show();
+
+            titel.setText("ســـفـر"+bibleName);
+        }
+        else if(statment == "new_statment" && biblePosition<=3){
+            titel.setText("انجـيـل"+"  "+bibleName);
+        }
+        else if(statment == "new_statment" && biblePosition==4){
+            titel.setText("سفر"+"  "+bibleName);
+        }
+        else if(statment == "new_statment" && biblePosition>4 &&biblePosition<=25){
+            titel.setText("رســـالة"+" "+bibleName);
+        }
+        else{ titel.setText(bibleName);}
+
+
+    }
 }
